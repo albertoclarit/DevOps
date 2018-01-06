@@ -17,24 +17,3 @@ spec:
     server: 10.130.24.100
     path: /shared
   persistentVolumeReclaimPolicy: Retain
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-   name: fabric8-docker-registry-storage
-      selfLink: /api/v1/namespaces/fabric8/persistentvolumeclaims/fabric8-docker-registry-storage
-  annotations:
-      fabric8.io/target-platform: kubernetes
-  creationTimestamp: null
-  labels:
-      group: io.fabric8.apps
-      project: docker-registry
-      provider: fabric8
-      version: 1.0.1
-spec:
-  storageClassName: standard
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 5Gi
