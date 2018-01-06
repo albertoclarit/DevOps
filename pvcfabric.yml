@@ -17,7 +17,6 @@ spec:
     server: 10.130.24.100
     path: /shared
   persistentVolumeReclaimPolicy: Retain
----
   apiVersion: v1
   kind: PersistentVolumeClaim
   metadata:
