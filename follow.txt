@@ -19,6 +19,13 @@ su master
 curl -sS https://raw.githubusercontent.com/albertoclarit/DevOps/master/setupenv.sh | bash
 
 
+ install flannel
+
+ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-rbac.yml
+
+ kubectl get all --namespace=kube-system
+
  install ingressnginx.txt
 
 
@@ -26,3 +33,13 @@ curl -sS https://raw.githubusercontent.com/albertoclarit/DevOps/master/setupenv.
      | kubectl apply -f -
 
 
+
+##### Teardown #####
+To undo what kubeadm did, you should first drain the node and make sure that the node is empty before shutting it down.
+Talking to the master with the appropriate credentials, run:
+
+
+kubectl drain <node name> --delete-local-data --force --ignore-daemonsets
+kubectl delete node <node name>
+
+kubeadm reset

@@ -14,6 +14,10 @@ apt-get update
 apt-get install -y kubelet kubeadm kubectl kubernetes-cni
 
 
+
+
+
+
 sudo add-apt-repository ppa:gophers/archive
 sudo apt update
 
@@ -25,6 +29,7 @@ unzip v1.0.0-alpha.0.zip -d xx
 
 echo "export PATH=\"\$PATH:/usr/lib/go-1.9/bin\"" >> .profile
 echo "export PATH=\"\$PATH:/root/xx/cri-tools-1.0.0-alpha.0/_output/bin\"" >> .profile
+echo "source <(kubectl completion bash)" >> ~/.profile
 source ~/.profile
 cd xx/cri-tools-1.0.0-alpha.0
 make
