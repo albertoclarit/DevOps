@@ -77,7 +77,7 @@ https://github.com/fabric8io/gofabric8/issues/619#issuecomment-349726104
 
 
 -- patching resource
-kubectl patch pv <your-pv-name> -p '{"spec":{"persistentVolumeReclaimPolicy":"Retain"}}'
+kubectl patch pvc wit-postgresql-data  -p '{"spec":{"storageClassName":"standard"}}'
 
 
      Installing Fabric8
