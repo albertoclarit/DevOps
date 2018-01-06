@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: fabric8
+  name: fabric8-1
   namespace: fabric8
   labels:
-    volume_name: fabric8
+    volume_name: fabric8-1
   annotations:
     volume.beta.kubernetes.io/storage-class: manual
 spec:
@@ -20,45 +20,22 @@ spec:
   persistentVolumeReclaimPolicy: Retain
 ---
 apiVersion: v1
-kind: PersistentVolumeClaim
+kind: PersistentVolume
 metadata:
-  name: fabric8-docker-registry-storage
+  name: fabric8-2
   namespace: fabric8
-  annotations:
-    fabric8.io/target-platform: kubernetes
-  creationTimestamp: null
   labels:
-    group: io.fabric8.apps
-    project: docker-registry
-    provider: fabric8
-    version: 1.0.1
-  selfLink: /api/v1/namespaces/fabric8/persistentvolumeclaims/fabric8-docker-registry-storage
+    volume_name: fabric8-2
+  annotations:
+    volume.beta.kubernetes.io/storage-class: manual
 spec:
   storageClassName: manual
+  capacity:
+    storage: 20Gi
   accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 5Gi
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: hindaw
-  namespace: fabric8
-  annotations:
-    fabric8.io/target-platform: kubernetes
-  creationTimestamp: null
-  labels:
-    group: io.fabric8.apps
-    project: docker-registry
-    provider: fabric8
-    version: 1.0.1
-  selfLink: /api/v1/namespaces/fabric8/persistentvolumeclaims/fabric8-docker-registry-storage
-spec:
-  storageClassName: manual
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 5Gi
+    - ReadWriteMany
+    - ReadWriteOnce
+  nfs:
+    server: 10.130.24.100
+    path: /shared
+  persistentVolumeReclaimPolicy: Retain
