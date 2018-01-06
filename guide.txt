@@ -1,0 +1,183 @@
+https://www.stratoscale.com/blog/containers/running-containers-on-bare-metal/
+
+
+https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+
+viewing all pods in kubernetes
+kubectl get pods --all-namespaces
+
+gofabric8 console
+gofabric8 service fabric8 —url
+gofabric8 service gogs
+gofabric8 service jenkins
+gofabric8 service nexus
+
+Persistent Volume
+kubectl get pvc
+kubectl get pv
+
+Create a Persistent Volume
+kubectl create -f https://k8s.io/docs/tasks/configure-pod-container/task-pv-volume.yaml
+
+Create a Persistent Volume Claim
+kubectl create -f https://k8s.io/docs/tasks/configure-pod-container/task-pv-claim.yaml
+
+Describe All PV
+kubectl describe pv
+
+
+Replacing an erronous pod
+kubectl get pod [podname]  -n [namespace] -o yaml | kubectl replace --force -f -
+kubectl get pod [podname]  -n [namespace] -o yaml | kubectl delete --force -f -
+kubectl delete deployment kube-flannel-ds-d46gt  --namespace=kube-system
+kubectl delete pod -n nginx-ingress nginx-ingress-7ddc99b46c-md4zb
+
+kubectl delete  --all deployment  --namespace=default
+
+kubectl reset
+======  practice on digital ocean =======
+
+master = 159.89.207.58
+                10.130.42.82
+node1  =
+
+node2  =
+
+
+NFS    =
+
+
+Check if  VXLAN is supported
+curl -sSL https://raw.githubusercontent.com/docker/docker/master/contrib/check-config.sh | bash
+lsmod |grep vxlan
+https://www.linode.com/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm
+
+
+create sudden
+adduser albert
+usermod -aG sudo albert
+
+
+Commands
+goto sudo -i
+apt-get update
+apt-get install -y docker.io
+
+apt-get update && apt-get install -y apt-transport-https
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+deb http://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+apt-get update
+apt-get install -y kubelet kubeadm kubectl kubernetes-cni
+
+If you are using Kubernetes 1.7+ then the following applies:
+* Swap must be disabled
+You can check if you have swap enabled by typing in cat /proc/swaps. If you have a swap file or partition enabled then turn it off with swapoff. You can make this permanent by commenting out the swap file in /etc/fstab.
+
+Install Go lang
+sudo apt-get install software-properties-common python-software-properties
+sudo add-apt-repository ppa:git-core/ppa
+sudo apt-get update
+sudo apt-get install git
+sudo add-apt-repository ppa:gophers/archive
+sudo apt update
+sudo apt-get install golang-1.9-go
+wget https://github.com/kubernetes-incubator/cri-tools/archive/v1.0.0-alpha.0.zip
+unzip file -d xx
+export PATH="$PATH:/usr/lib/go-1.9/bin"
+export PATH="$PATH:/root/xx/cri-tools-1.0.0-alpha.0/_output/bin"
+ put to profile
+
+
+--ignore-preflight-errors  snake problem hehe
+
+
+kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=10.130.22.99 --kubernetes-version stable-1.9 --ignore-preflight-errors=cri
+
+
+
+Before using make an ordinary user
+ mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+
+
+
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-rbac.yml
+
+kubectl get all --namespace=kube-system
+kubectl logs -n kube-system po/kube-flannel-ds-zqcl5
+
+
+
+
+
+   kubeadm join --token 4a13c9.40f0730b001e3238 10.130.42.82:6443 --discovery-token-ca-cert-hash sha256:44809e2ac48072685d18ce9a13f03a461e39c029b2b9456615f42802bb72b878 --ignore-preflight-errors=cri
+
+
+check
+
+kubectl get nodes
+
+
+create dashboard
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+kubectl proxy
+http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
+
+https://github.com/kubernetes/dashboard/wiki/Installation
+ssh -L 8001:localhost:8001   jao@159.89.199.63
+
+
+
+
+
+kubeadm reset to reset join
+kubeadm token list
+
+create a role for ingress
+https://github.com/kubernetes/ingress-nginx/issues/266
+see ankon
+kubectl get roles  --all-namespaces
+kubectl delete --all pods --namespace=nginx-ingress
+kubectl get pods --all-namespaces
+
+
+Using Helm
+https://docs.helm.sh/using_helm/#installing-helm
+https://stackoverflow.com/questions/43499971/helm-error-no-available-release-name-found
+
+Install Ingress with RBAC
+https://github.com/kubernetes/ingress-nginx
+
+Install Fabric8 using helm
+
+
+https://github.com/fabric8io/fabric8-platform/blob/master/INSTALL.md
+
+export GITHUB_OAUTH_CLIENT_ID=123
+export GITHUB_OAUTH_CLIENT_SECRET=123abc
+curl -sS https://get.fabric8.io/download.txt | bash
+gofabric8 deploy
+
+export TLS_ACME_EMAIL=email.address@for.certbot.com
+gofabric8 deploy --package system --http=true  --domain example.domain.fabric8.io --legacy=false -n fabric8 —ingress=false
+
+
+http://docs.heptio.com/content/tutorials/rbac.html
+
+system account
+https://github.com/fabric8io/fabric8/issues/6840#issuecomment-325574969
+exposeController
+https://github.com/fabric8io/exposecontroller#configuration
+
+clean
+https://github.com/fabric8io/gofabric8/issues/588
+
+
+get clusterinfo
+kubectl cluster-info
+
