@@ -5,7 +5,7 @@ metadata:
   labels:
     volume_name: fabric8
   annotations:
-    volume.beta.kubernetes.io/storage-class: 
+    volume.beta.kubernetes.io/storage-class:
 spec:
   storageClassName:
   capacity:
