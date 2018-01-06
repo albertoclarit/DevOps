@@ -55,8 +55,6 @@ curl -sS https://raw.githubusercontent.com/albertoclarit/DevOps/master/setupenv.
  watch kubectl get pods --all-namespaces
 
 
- curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/fabric8cluster.yml \
-     | kubectl apply -f -
 
 
 
@@ -68,8 +66,7 @@ curl -sS https://raw.githubusercontent.com/albertoclarit/DevOps/master/setupenv.
 
      curl -sS https://get.fabric8.io/download.txt | bash
 
-     gofabric8 deploy —-ingress=false --package system --http=true  \
-      --domain 10.211.55.26.nip.io --legacy=false -n fabric8
+     gofabric8 deploy —-ingress=false --package system --http=true  --domain 159.89.201.44.nip.io --legacy=false -n fabric8
      gofabric8 secrets -y
 
      gofabric8 clean system
