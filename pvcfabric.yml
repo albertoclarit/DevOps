@@ -2,6 +2,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: fabric8
+  namespace: fabric8
   labels:
     volume_name: fabric8
   annotations:
@@ -30,6 +31,7 @@ metadata:
     provider: fabric8
     version: 1.0.1
   name: fabric8-docker-registry-storage
+  namespace: fabric8
   selfLink: /api/v1/namespaces/fabric8/persistentvolumeclaims/fabric8-docker-registry-storage
 spec:
   storageClassName: manual
