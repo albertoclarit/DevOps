@@ -4,10 +4,25 @@ curl -sS https://raw.githubusercontent.com/albertoclarit/DevOps/master/settingk8
  ####  replace apiserver-advertise-address ####
 kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=10.132.72.132 --kubernetes-version stable-1.9 --ignore-preflight-errors=cri
 
- ### watch the join token ####3
+ ### watch the join token ####
+
+kubeadm join --token cc1175.8bc6d97ce926a20a 10.132.72.132:6443 --discovery-token-ca-cert-hash sha256:d7df01464da6758805d7694053b81f9ffcdb25d53bf0935909d3026c26ae0044
+
+ ### watch the join token ####
+
+
+adduser master
+usermod -aG sudo master
+
+su master
+
+curl -sS https://raw.githubusercontent.com/albertoclarit/DevOps/master/setupenv.sh | bash
+
 
  install ingressnginx.txt
 
 
  curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/fabric8cluster.yml \
      | kubectl apply -f -
+
+
