@@ -71,9 +71,7 @@ kubectl get pvc -n fabric8 fabric8-docker-registry-storage  --export=true -o yam
      | kubectl apply -f -
 
 
-using helm
-curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/pvcfabric.yml \
-          | kubectl apply -f -
+
 
 
 In the past, the annotation volume.beta.kubernetes.io/storage-class was used
@@ -98,7 +96,13 @@ https://docs.helm.sh/using_helm/#installing-helm
 https://stackoverflow.com/questions/43499971/helm-error-no-available-release-name-found
 
 
+using helm
+curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/pvcfabric.yml \
+          | kubectl apply -f -
 
+
+curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/ingress_expose.yml \
+          | kubectl apply -f -
 
      Installing Fabric8
 
@@ -113,6 +117,13 @@ https://stackoverflow.com/questions/43499971/helm-error-no-available-release-nam
 
      gofabric8 clean system
      gofabric8 clean apps
+
+gofabric8 validate
+gofabric8 service fabric8 --url
+gofabric8 service gogs
+gofabric8 service jenkins
+gofabric8 service nexus
+
 
 
 ##### Teardown #####

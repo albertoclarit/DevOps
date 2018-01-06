@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: fabric8_public
+spec:
+  selector:
+    app: MyApp
+  ports:
+  - name: fabric8
+    protocol: TCP
+    port: 80
+    targetPort: 80
+  externalIPs:
+  - 159.89.201.44
