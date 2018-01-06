@@ -56,6 +56,10 @@ curl -sS https://raw.githubusercontent.com/albertoclarit/DevOps/master/setupenv.
 
 
 
+https://help.ubuntu.com/lts/serverguide/network-file-system.html
+
+ curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/pvcfabric.yml \
+     | kubectl apply -f -
 
 
      Installing Fabric8
