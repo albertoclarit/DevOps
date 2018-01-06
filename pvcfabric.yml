@@ -29,8 +29,8 @@ metadata:
       project: docker-registry
       provider: fabric8
       version: 1.0.1
-  name: fabric8-docker-registry-storage
-    selfLink: /api/v1/namespaces/fabric8/persistentvolumeclaims/fabric8-docker-registry-storage
+      name: fabric8-docker-registry-storage
+          selfLink: /api/v1/namespaces/fabric8/persistentvolumeclaims/fabric8-docker-registry-storage
 spec:
   storageClassName: standard
   accessModes:
