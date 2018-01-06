@@ -37,14 +37,6 @@ kubectl delete  --all deployment  --namespace=default
 kubectl reset
 ======  practice on digital ocean =======
 
-master = 159.89.207.58
-                10.130.42.82
-node1  =
-
-node2  =
-
-
-NFS    =
 
 
 Check if  VXLAN is supported
