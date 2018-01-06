@@ -1,0 +1,6 @@
+export GITHUB_OAUTH_CLIENT_ID=123
+export GITHUB_OAUTH_CLIENT_SECRET=123abc
+curl -sS https://get.fabric8.io/download.txt | bash
+
+export TLS_ACME_EMAIL=email.address@for.certbot.com
+gofabric8 deploy --package system --http=true  --domain example.domain.nip.io --legacy=false -n fabric8 —ingress=false

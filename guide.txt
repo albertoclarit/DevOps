@@ -145,8 +145,7 @@ https://stackoverflow.com/questions/43499971/helm-error-no-available-release-nam
 Install Ingress with RBAC
 https://github.com/kubernetes/ingress-nginx
 
-Install Fabric8 using helm
-
+Install Fabric8
 
 https://github.com/fabric8io/fabric8-platform/blob/master/INSTALL.md
 
