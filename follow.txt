@@ -126,6 +126,9 @@ gofabric8 service nexus
 
 
 
+curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/exposefabricpublic.yml \
+          | kubectl apply -f -
+
 ##### Teardown #####
 To undo what kubeadm did, you should first drain the node and make sure that the node is empty before shutting it down.
 Talking to the master with the appropriate credentials, run:

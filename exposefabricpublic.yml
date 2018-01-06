@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: fabric8_public
+  name: fabric8-public
 spec:
   selector:
     app: MyApp
