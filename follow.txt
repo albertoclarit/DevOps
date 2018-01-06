@@ -1,1 +1,13 @@
 curl -sS https://raw.githubusercontent.com/albertoclarit/DevOps/master/settingk8.sh | bash
+
+
+ ####  replace apiserver-advertise-address ####
+kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=10.132.72.132 --kubernetes-version stable-1.9 --ignore-preflight-errors=cri
+
+ ### watch the join token ####3
+
+ install ingressnginx.txt
+
+
+ curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/fabric8cluster.yml \
+     | kubectl apply -f -
