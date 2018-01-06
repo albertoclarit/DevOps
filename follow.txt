@@ -70,6 +70,8 @@ kubectl get pvc -n fabric8 fabric8-docker-registry-storage  --export=true -o yam
  curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/pvcfabricfinal.yml \
      | kubectl apply -f -
 
+
+using helm
 curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/pvcfabric.yml \
           | kubectl apply -f -
 
