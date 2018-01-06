@@ -4,10 +4,7 @@ metadata:
   name: fabric8
   labels:
     volume_name: fabric8
-  annotations:
-    volume.beta.kubernetes.io/storage-class: manual
 spec:
-  storageClassName: manual
   capacity:
     storage: 20Gi
   accessModes:
