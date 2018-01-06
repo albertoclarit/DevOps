@@ -17,6 +17,7 @@ spec:
     server: 10.130.24.100
     path: /shared
   persistentVolumeReclaimPolicy: Retain
+  ---
   apiVersion: v1
   kind: PersistentVolumeClaim
   metadata:
@@ -31,7 +32,7 @@ spec:
     name: fabric8-docker-registry-storage
     selfLink: /api/v1/namespaces/fabric8/persistentvolumeclaims/fabric8-docker-registry-storage
   spec:
-  storageClassName: standard
+    storageClassName: standard
     accessModes:
     - ReadWriteOnce
     resources:
