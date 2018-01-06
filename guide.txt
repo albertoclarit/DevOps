@@ -107,7 +107,7 @@ kubectl logs -n kube-system po/kube-flannel-ds-zqcl5
 
 
 
-   kubeadm join --token 4a13c9.40f0730b001e3238 10.130.42.82:6443 --discovery-token-ca-cert-hash sha256:44809e2ac48072685d18ce9a13f03a461e39c029b2b9456615f42802bb72b878 --ignore-preflight-errors=cri
+kubeadm join --token 29bdd5.458b621067a63f34 10.130.20.121:6443 --discovery-token-ca-cert-hash sha256:ed446cdeb839eab56ee80bd8705948fb34a41cd2cea0c6e1a800b66af778ae06 --ignore-preflight-errors=cri
 
 
 check

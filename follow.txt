@@ -1,13 +1,22 @@
+
+Check if  VXLAN is supported
+curl -sSL https://raw.githubusercontent.com/docker/docker/master/contrib/check-config.sh | bash
+
+If you are using Kubernetes 1.7+ then the following applies:
+* Swap must be disabled
+You can check if you have swap enabled by typing in cat /proc/swaps. If you have a swap file or partition enabled then turn it off with swapoff. You can make this permanent by commenting out the swap file in /etc/fstab.
+
+
+
 curl -sS https://raw.githubusercontent.com/albertoclarit/DevOps/master/settingk8.sh | bash
 
 
  ####  replace apiserver-advertise-address ####
-kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=10.132.72.132 --kubernetes-version stable-1.9 --ignore-preflight-errors=cri
+kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=10.130.20.121 --kubernetes-version stable-1.9 --ignore-preflight-errors=cri
 
  ### watch the join token ####
 
-kubeadm join --token cc1175.8bc6d97ce926a20a 10.132.72.132:6443 --discovery-token-ca-cert-hash sha256:d7df01464da6758805d7694053b81f9ffcdb25d53bf0935909d3026c26ae0044
-
+kubeadm join --token 29bdd5.458b621067a63f34 10.130.20.121:6443 --discovery-token-ca-cert-hash sha256:ed446cdeb839eab56ee80bd8705948fb34a41cd2cea0c6e1a800b66af778ae06 --ignore-preflight-errors=cri
  ### watch the join token ####
 
 
@@ -18,6 +27,7 @@ su master
 
 curl -sS https://raw.githubusercontent.com/albertoclarit/DevOps/master/setupenv.sh | bash
 
+ kubectl taint nodes --all node-role.kubernetes.io/master-
 
  install flannel
 
@@ -26,12 +36,44 @@ curl -sS https://raw.githubusercontent.com/albertoclarit/DevOps/master/setupenv.
 
  kubectl get all --namespace=kube-system
 
+
+### without flannel dns pod will not start
+  kubectl describe pod -n namespace  namepod
+  kubectl describe node namenode
+
+
  install ingressnginx.txt
+
+ ### if pending ####
+ kubectl delete --all deployment --namespace=ingress-nginx
+
 
 
  curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/fabric8cluster.yml \
      | kubectl apply -f -
 
+ watch kubectl get pods --all-namespaces
+
+
+ curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/fabric8cluster.yml \
+     | kubectl apply -f -
+
+
+
+     Installing Fabric8
+
+     export GITHUB_OAUTH_CLIENT_ID=123
+     export GITHUB_OAUTH_CLIENT_SECRET=123abc
+     export TLS_ACME_EMAIL=albertoclarit@gmail.com@for.certbot.com
+
+     curl -sS https://get.fabric8.io/download.txt | bash
+
+     gofabric8 deploy —-ingress=false --package system --http=true  \
+      --domain 10.211.55.26.nip.io --legacy=false -n fabric8
+     gofabric8 secrets -y
+
+     gofabric8 clean system
+     gofabric8 clean apps
 
 
 ##### Teardown #####
