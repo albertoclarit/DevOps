@@ -61,6 +61,8 @@ https://help.ubuntu.com/lts/serverguide/network-file-system.html
  curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/pvcfabric.yml \
      | kubectl apply -f -
 
+kubectl patch pv <your-pv-name> -p '{"spec":{"persistentVolumeReclaimPolicy":"Retain"}}'
+
 
      Installing Fabric8
 
