@@ -58,9 +58,22 @@ curl -sS https://raw.githubusercontent.com/albertoclarit/DevOps/master/setupenv.
 
 https://help.ubuntu.com/lts/serverguide/network-file-system.html
 
+
+- get original yaml
+kubectl get pvc -n fabric8 fabric8-docker-registry-storage  --export=true -o yaml
+
+
  curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/pvcfabric.yml \
      | kubectl apply -f -
 
+In the past, the annotation volume.beta.kubernetes.io/storage-class was used
+instead of the storageClassName attribute. This annotation is still working,
+however it will become fully deprecated in a future Kubernetes release.
+https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class
+
+
+
+-- patching resource
 kubectl patch pv <your-pv-name> -p '{"spec":{"persistentVolumeReclaimPolicy":"Retain"}}'
 
 

@@ -5,9 +5,9 @@ metadata:
   labels:
     volume_name: fabric8
   annotations:
-    volume.beta.kubernetes.io/storage-class: manual
+    volume.beta.kubernetes.io/storage-class: standard
 spec:
-  storageClassName: manual
+  storageClassName: standard
   capacity:
     storage: 20Gi
   accessModes:
@@ -17,3 +17,25 @@ spec:
     server: 10.130.24.100
     path: /shared
   persistentVolumeReclaimPolicy: Retain
+---
+  apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    annotations:
+      fabric8.io/target-platform: kubernetes
+    creationTimestamp: null
+    labels:
+      group: io.fabric8.apps
+      project: docker-registry
+      provider: fabric8
+      version: 1.0.1
+    name: fabric8-docker-registry-storage
+    selfLink: /api/v1/namespaces/fabric8/persistentvolumeclaims/fabric8-docker-registry-storage
+  spec:
+  storageClassName: standard
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 5Gi
+  status: {}
