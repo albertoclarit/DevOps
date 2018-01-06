@@ -106,10 +106,10 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: fabric8-5
+  name: fabric8-6
   namespace: fabric8
   labels:
-    volume_name: fabric8-5
+    volume_name: fabric8-6
   annotations:
     volume.beta.kubernetes.io/storage-class: standard
 spec:

@@ -70,6 +70,10 @@ kubectl get pvc -n fabric8 fabric8-docker-registry-storage  --export=true -o yam
  curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/pvcfabricfinal.yml \
      | kubectl apply -f -
 
+curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/pvcfabric.yml \
+          | kubectl apply -f -
+
+
 In the past, the annotation volume.beta.kubernetes.io/storage-class was used
 instead of the storageClassName attribute. This annotation is still working,
 however it will become fully deprecated in a future Kubernetes release.
