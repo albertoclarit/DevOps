@@ -2,7 +2,7 @@
 # curl -sS https://raw.githubusercontent.com/albertoclarit/DevOps/master/settingk8.sh | bash
 
 apt-get update
-apt-get install -y docker.io
+apt-get install -y docker.io nfs-common
 
 
 apt-get update && apt-get install -y apt-transport-https

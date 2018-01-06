@@ -16,7 +16,7 @@ kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=10.1
 
  ### watch the join token ####
 
-kubeadm join --token 29bdd5.458b621067a63f34 10.130.20.121:6443 --discovery-token-ca-cert-hash sha256:ed446cdeb839eab56ee80bd8705948fb34a41cd2cea0c6e1a800b66af778ae06 --ignore-preflight-errors=cri
+kubeadm join --token f5815e.7b163fa9ff79ae05 10.130.20.121:6443 --discovery-token-ca-cert-hash sha256:97503c766436cf9d5b8f4c528f81c9285a9aa0d42b369c8a5af9851be697e1c8 --ignore-preflight-errors=cri
  ### watch the join token ####
 
 
@@ -57,13 +57,17 @@ curl -sS https://raw.githubusercontent.com/albertoclarit/DevOps/master/setupenv.
 
 
 https://help.ubuntu.com/lts/serverguide/network-file-system.html
-
+https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-ubuntu-16-04
+https://askubuntu.com/questions/525243/why-do-i-get-wrong-fs-type-bad-option-bad-superblock-error
+https://kubernetes.io/docs/concepts/storage/persistent-volumes/#recycling
+https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-container/
 
 - get original yaml
 kubectl get pvc -n fabric8 fabric8-docker-registry-storage  --export=true -o yaml
 
 
- curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/pvcfabric.yml \
+ curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/pvcfabricfinal.yml \
      | kubectl apply -f -
 
 In the past, the annotation volume.beta.kubernetes.io/storage-class was used
@@ -73,11 +77,21 @@ https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class
 
 
 https://github.com/fabric8io/gofabric8/issues/619#issuecomment-349726104
-
+https://stackoverflow.com/questions/44204223/kubernetes-nfs-persistent-volumes-multiple-claims-on-same-volume-claim-stuck
+you cannot bound multiple pvc to a single pv
 
 
 -- patching resource
 kubectl patch pvc wit-postgresql-data  -p '{"spec":{"storageClassName":"standard"}}'
+
+
+
+ Try Using Helm
+Using Helm
+https://docs.helm.sh/using_helm/#installing-helm
+https://stackoverflow.com/questions/43499971/helm-error-no-available-release-name-found
+
+
 
 
      Installing Fabric8

@@ -6,9 +6,9 @@ metadata:
   labels:
     volume_name: fabric8-1
   annotations:
-    volume.beta.kubernetes.io/storage-class: manual
+    volume.beta.kubernetes.io/storage-class: standard
 spec:
-  storageClassName: manual
+  storageClassName: standard
   capacity:
     storage: 20Gi
   accessModes:
@@ -27,9 +27,9 @@ metadata:
   labels:
     volume_name: fabric8-2
   annotations:
-    volume.beta.kubernetes.io/storage-class: manual
+    volume.beta.kubernetes.io/storage-class: standard
 spec:
-  storageClassName: manual
+  storageClassName: standard
   capacity:
     storage: 20Gi
   accessModes:
@@ -39,3 +39,91 @@ spec:
     server: 10.130.24.100
     path: /shared
   persistentVolumeReclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fabric8-3
+  namespace: fabric8
+  labels:
+    volume_name: fabric8-3
+  annotations:
+    volume.beta.kubernetes.io/storage-class: standard
+spec:
+  storageClassName: standard
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteMany
+    - ReadWriteOnce
+  nfs:
+    server: 10.130.24.100
+    path: /shared
+  persistentVolumeReclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fabric8-4
+  namespace: fabric8
+  labels:
+    volume_name: fabric8-4
+  annotations:
+    volume.beta.kubernetes.io/storage-class: standard
+spec:
+  storageClassName: standard
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteMany
+    - ReadWriteOnce
+  nfs:
+    server: 10.130.24.100
+    path: /shared
+  persistentVolumeReclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fabric8-5
+  namespace: fabric8
+  labels:
+    volume_name: fabric8-5
+  annotations:
+    volume.beta.kubernetes.io/storage-class: standard
+spec:
+  storageClassName: standard
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteMany
+    - ReadWriteOnce
+  nfs:
+    server: 10.130.24.100
+    path: /shared
+  persistentVolumeReclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fabric8-5
+  namespace: fabric8
+  labels:
+    volume_name: fabric8-5
+  annotations:
+    volume.beta.kubernetes.io/storage-class: standard
+spec:
+  storageClassName: standard
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteMany
+    - ReadWriteOnce
+  nfs:
+    server: 10.130.24.100
+    path: /shared
+  persistentVolumeReclaimPolicy: Retain
+
+
+
+
