@@ -22,6 +22,8 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
+  name: fabric8-docker-registry-storage
+  namespace: fabric8
   annotations:
     fabric8.io/target-platform: kubernetes
   creationTimestamp: null
@@ -30,8 +32,6 @@ metadata:
     project: docker-registry
     provider: fabric8
     version: 1.0.1
-  name: fabric8-docker-registry-storage
-  namespace: fabric8
   selfLink: /api/v1/namespaces/fabric8/persistentvolumeclaims/fabric8-docker-registry-storage
 spec:
   storageClassName: manual
