@@ -1,4 +1,8 @@
 
+https://askubuntu.com/questions/162391/how-do-i-fix-my-locale-issue
+
+journalctl -u nginx.service
+
 Check if  VXLAN is supported
 curl -sSL https://raw.githubusercontent.com/docker/docker/master/contrib/check-config.sh | bash
 
@@ -12,11 +16,11 @@ curl -sS https://raw.githubusercontent.com/albertoclarit/DevOps/master/settingk8
 
 
  ####  replace apiserver-advertise-address ####
-kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=10.130.20.121 --kubernetes-version stable-1.9 --ignore-preflight-errors=cri
+kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.168.1.149 --kubernetes-version stable-1.9 --ignore-preflight-errors=cri
 
  ### watch the join token ####
 
-kubeadm join --token f5815e.7b163fa9ff79ae05 10.130.20.121:6443 --discovery-token-ca-cert-hash sha256:97503c766436cf9d5b8f4c528f81c9285a9aa0d42b369c8a5af9851be697e1c8 --ignore-preflight-errors=cri
+kubeadm join --token 9d3529.6fc4b7c3e48a25d7 192.168.1.149:6443 --discovery-token-ca-cert-hash sha256:6962291b6cb1fce224ce15c3e7686aa7bba00737db3ec75488e10eabed35b12b --ignore-preflight-errors=cri
  ### watch the join token ####
 
 
@@ -29,7 +33,7 @@ curl -sS https://raw.githubusercontent.com/albertoclarit/DevOps/master/setupenv.
 
  kubectl taint nodes --all node-role.kubernetes.io/master-
 
- install flannel
+ install flannel from official
 
  kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
  kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-rbac.yml
@@ -53,6 +57,7 @@ curl -sS https://raw.githubusercontent.com/albertoclarit/DevOps/master/setupenv.
      | kubectl apply -f -
 
  watch kubectl get pods --all-namespaces
+ watch kubectl get pods -o wide
 
 
 
@@ -67,6 +72,7 @@ https://kubernetes.io/docs/tasks/debug-application-cluster/get-shell-running-con
 kubectl get pvc -n fabric8 fabric8-docker-registry-storage  --export=true -o yaml
 
 
+-- if using gofabric deploy
  curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/pvcfabricfinal.yml \
      | kubectl apply -f -
 
@@ -100,6 +106,8 @@ using helm
 curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/pvcfabric.yml \
           | kubectl apply -f -
 
+install first in help
+
 
 curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/ingress_expose.yml \
           | kubectl apply -f -
@@ -113,7 +121,14 @@ curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/ingress_expos
      curl -sS https://get.fabric8.io/download.txt | bash
 
      gofabric8 deploy —-ingress=false --package system --http=true  --domain 159.89.201.44.nip.io --legacy=false -n fabric8
+     gofabric8 deploy —-ingress=false --package system --http=true  --domain 159.89.201.44.nip.io --legacy=false
+
+      gofabric8 deploy  --http=true  --domain 159.89.201.44.nip.io
+
+
      gofabric8 secrets -y
+
+     kubectl exec -t -i guids-2617315942-lzwdh sh
 
      gofabric8 clean system
      gofabric8 clean apps
@@ -125,16 +140,28 @@ gofabric8 service jenkins
 gofabric8 service nexus
 
 
-
+not used anymore
 curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/exposefabricpublic.yml \
           | kubectl apply -f -
+
+
+
+kubectl get ing
+
+
+https://kubernetes.io/docs/tutorials/stateless-application/expose-external-ip-address/
+https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-controllers
+https://blog.fabric8.io/accessing-your-applications-on-kubernetes-or-openshift-3e69be0ad3bc
 
 ##### Teardown #####
 To undo what kubeadm did, you should first drain the node and make sure that the node is empty before shutting it down.
 Talking to the master with the appropriate credentials, run:
 
 
-kubectl drain <node name> --delete-local-data --force --ignore-daemonsets
-kubectl delete node <node name>
+kubectl drain node1 --delete-local-data --force --ignore-daemonsets
+kubectl delete node node1
+
+kubectl drain master --delete-local-data --force --ignore-daemonsets
+kubectl delete node master
 
 kubeadm reset

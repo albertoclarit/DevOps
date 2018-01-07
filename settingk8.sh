@@ -34,7 +34,7 @@ source ~/.profile
 cd xx/cri-tools-1.0.0-alpha.0
 make
 cd ~
-
+source ~/.profile
 
 
 
