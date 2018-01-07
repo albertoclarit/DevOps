@@ -1,6 +1,6 @@
 #!/bin/bash
-# curl -sS https://raw.githubusercontent.com/albertoclarit/DevOps/master/localbugfix.sh | bash
-# should be run in root
+#curl -sS https://raw.githubusercontent.com/albertoclarit/DevOps/master/localbugfix.sh | bash
+#should be run in root
 
 locale-gen en_US.UTF-8
 dpkg-reconfigure locales
