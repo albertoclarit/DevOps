@@ -108,6 +108,7 @@ using helm
 curl https://raw.githubusercontent.com/albertoclarit/DevOps/master/pvcfabric.yml \
           | kubectl apply -f -
 
+pls check NFS Mounts
 install first in help
 
 
