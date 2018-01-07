@@ -15,7 +15,7 @@ spec:
     - ReadWriteMany
     - ReadWriteOnce
   nfs:
-    server: 10.130.24.100
+    server: 192.168.1.148
     path: /shared
   persistentVolumeReclaimPolicy: Retain
 ---
@@ -36,7 +36,7 @@ spec:
     - ReadWriteMany
     - ReadWriteOnce
   nfs:
-    server: 10.130.24.100
+    server: 192.168.1.148
     path: /shared
   persistentVolumeReclaimPolicy: Retain
 ---
@@ -57,7 +57,7 @@ spec:
     - ReadWriteMany
     - ReadWriteOnce
   nfs:
-    server: 10.130.24.100
+    server: 192.168.1.148
     path: /shared
   persistentVolumeReclaimPolicy: Retain
 ---
@@ -78,7 +78,7 @@ spec:
     - ReadWriteMany
     - ReadWriteOnce
   nfs:
-    server: 10.130.24.100
+    server: 192.168.1.148
     path: /shared
   persistentVolumeReclaimPolicy: Retain
 ---
@@ -99,7 +99,7 @@ spec:
     - ReadWriteMany
     - ReadWriteOnce
   nfs:
-    server: 10.130.24.100
+    server: 192.168.1.148
     path: /shared
   persistentVolumeReclaimPolicy: Retain
 ---
@@ -120,7 +120,7 @@ spec:
     - ReadWriteMany
     - ReadWriteOnce
   nfs:
-    server: 10.130.24.100
+    server: 192.168.1.148
     path: /shared
   persistentVolumeReclaimPolicy: Retain
 
