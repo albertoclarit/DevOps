@@ -20,7 +20,7 @@ kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=192.
 
  ### watch the join token ####
 
-kubeadm join --token 9d3529.6fc4b7c3e48a25d7 192.168.1.149:6443 --discovery-token-ca-cert-hash sha256:6962291b6cb1fce224ce15c3e7686aa7bba00737db3ec75488e10eabed35b12b --ignore-preflight-errors=cri
+kubeadm join --token d9c7f4.77c2d5a44526aab1 192.168.1.149:6443 --discovery-token-ca-cert-hash sha256:40f55e0c71cec177213f7e3dee397f4d916243346e716fb52dc1c6d36255574c  --ignore-preflight-errors=cri
  ### watch the join token ####
 
 
@@ -34,6 +34,8 @@ curl -sS https://raw.githubusercontent.com/albertoclarit/DevOps/master/setupenv.
  kubectl taint nodes --all node-role.kubernetes.io/master-
 
  install flannel from official
+ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
 
  kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
  kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-rbac.yml
@@ -57,7 +59,7 @@ curl -sS https://raw.githubusercontent.com/albertoclarit/DevOps/master/setupenv.
      | kubectl apply -f -
 
  watch kubectl get pods --all-namespaces
- watch kubectl get pods -o wide
+ watch kubectl get pods --all-namespaces -o wide
 
 
 
